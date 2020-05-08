@@ -44,13 +44,13 @@ function createNewTast(parent, task) {
 function createTaskControler(parent) {
   let controlPannerl = create({ class: "task-control-panel" });
 
-  let colorPallete = createColorPallete();
+  let colorPallete = createColorPallete(parent);
   controlPannerl.appendChild(colorPallete);
 
   return controlPannerl;
 }
 
-function createColorPallete() {
+function createColorPallete(parent) {
   const colors = [
     "palegreen",
     "skyblue",
@@ -64,6 +64,11 @@ function createColorPallete() {
   colors.forEach((color) => {
     let div = create({ class: "color-circle ml-2" });
     div.style.background = color;
+
+    div.addEventListener("click", () => {
+      parent.style.background = color;
+    });
+
     colorDiv.appendChild(div);
   });
   return colorDiv;
