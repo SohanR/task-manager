@@ -42,10 +42,13 @@ function createNewTast(parent, task) {
 }
 
 function createTaskControler(parent) {
-  let controlPannerl = create({ class: "task-control-panel" });
+  let controlPannerl = create({ class: "task-control-panel d-flex" });
 
   let colorPallete = createColorPallete(parent);
   controlPannerl.appendChild(colorPallete);
+
+  let editBtn = createEditBtn(parent);
+  controlPannerl.appendChild(editBtn);
 
   return controlPannerl;
 }
@@ -72,6 +75,23 @@ function createColorPallete(parent) {
     colorDiv.appendChild(div);
   });
   return colorDiv;
+}
+
+function createEditBtn(parent) {
+  let span = create("span", { class: "ml-auto mr-2" });
+  span.innerHTML = '<i class="far fa-edit"></i>';
+  span.style.color = "white";
+  span.addEventListener("click", () => {
+    let p = parent.querySelector("p");
+    let textArea = create("textarea", { class: "inner-textarea" });
+    textArea.style.width = parent.offsetwidth;
+    textArea.style.height = parent.offsetheight;
+    textArea.innerHTML = p.innerHTML;
+
+    parent.appendChild(textArea);
+  });
+
+  return span;
 }
 
 window.create = function () {
