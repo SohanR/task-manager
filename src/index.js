@@ -26,10 +26,47 @@ function createNewTast(parent, task) {
   singleTask.appendChild(span);
 
   let taskControler = createTaskControler(singleTask);
+  taskControler.style.visibility = "hidden";
+
   singleTask.appendChild(taskControler);
+
+  singleTask.onmouseenter = () => {
+    taskControler.style.visibility = "visible";
+  };
+  singleTask.onmouseleave = () => {
+    taskControler.style.visibility = "hidden";
+  };
 
   col.appendChild(singleTask);
   parent.appendChild(col);
+}
+
+function createTaskControler(parent) {
+  let controlPannerl = create({ class: "task-control-panel" });
+
+  let colorPallete = createColorPallete();
+  controlPannerl.appendChild(colorPallete);
+
+  return controlPannerl;
+}
+
+function createColorPallete() {
+  const colors = [
+    "palegreen",
+    "skyblue",
+    "powderblue",
+    "salmon",
+    "red",
+    "grey",
+  ];
+
+  let colorDiv = create({ class: "d-flex" });
+  colors.forEach((color) => {
+    let div = create({ class: "color-circle ml-2" });
+    div.style.background = color;
+    colorDiv.appendChild(div);
+  });
+  return colorDiv;
 }
 
 window.create = function () {
