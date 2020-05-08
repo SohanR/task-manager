@@ -17,3 +17,18 @@ h1 {
   position: relative;
   margin-bottom: 10px;
 }
+
+.task-control-panel {
+  width: 100%;
+  min-height: 40px;
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.color-circle {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
