@@ -84,9 +84,21 @@ function createEditBtn(parent) {
   span.addEventListener("click", () => {
     let p = parent.querySelector("p");
     let textArea = create("textarea", { class: "inner-textarea" });
-    textArea.style.width = parent.offsetwidth;
-    textArea.style.height = parent.offsetheight;
+    textArea.style.width = parent.offsetWidth + "px";
+    textArea.style.height = parent.offsetHeight + "px";
     textArea.innerHTML = p.innerHTML;
+
+    textArea.addEventListener("keypress", function (event) {
+      if (event.keyCode === 13) {
+        event.stopPropagation();
+        if (this.value) {
+          p.innerHTML = this.value;
+          parent.removeChild(this);
+        } else {
+          alert("Task Cannot be empty");
+        }
+      }
+    });
 
     parent.appendChild(textArea);
   });
