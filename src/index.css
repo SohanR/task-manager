@@ -32,3 +32,15 @@ h1 {
   height: 25px;
   border-radius: 50%;
 }
+
+.inner-textarea {
+  resize: none;
+  position: absolute;
+  background: #ddd;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.35);
+  top: 0;
+  left: 0;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 16px;
+  padding: 5px;
+}
